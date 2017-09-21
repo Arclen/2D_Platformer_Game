@@ -1,2 +1,8 @@
-# 2D_Game
-Our super dope 2D platformer game for ACM UTD Projects
+# YO YO YO CHECK THIS OUT
+
+We have a super dope team consisting of
+- Jacob 
+- Waqas
+- Logan
+- Garrett
+- Jacob again
