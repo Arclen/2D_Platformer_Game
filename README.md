@@ -12,3 +12,9 @@ Here's our ideas (tentative):
 - Adaptive enemy AI
 - Multiple "colors" or weapon types
   - enemies can be resistant to these types
+
+Stuff we use:
+- Slack
+- Git (obviously)
+- Unity
+- Visual Studio `C#`
