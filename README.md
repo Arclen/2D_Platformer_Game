@@ -7,6 +7,8 @@ We have a super dope team consisting of
 - Garrett
 - Jacob again
 
+idea doc: https://drive.google.com/open?id=1-UM_YXCVKbdqHmRfftyg0q6AV0EA7-d-CG65bvG0PC4
+
 Here's our ideas (tentative):
 - 2D sidescroller (not auto-scroll)
 - Adaptive enemy AI
