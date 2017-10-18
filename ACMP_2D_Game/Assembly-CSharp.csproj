@@ -51,8 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\PhysicsObject.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\RoomController.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/home/logan/Development/2D_Game/ACMP_2D_Game/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>
