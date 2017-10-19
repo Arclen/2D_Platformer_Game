@@ -231,7 +231,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114904145036398330, guid: d531700c60de64e3b8e75c1c26da5ed3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114904145036398330, guid: d531700c60de64e3b8e75c1c26da5ed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d531700c60de64e3b8e75c1c26da5ed3, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &392705972 stripped
@@ -567,7 +573,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1166541437}
-  - component: {fileID: 1166541436}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -575,17 +580,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1166541436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1166541435}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84032c29f5a6f47b5878cf3457b3d1e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1166541437
 Transform:
   m_ObjectHideFlags: 0
@@ -1213,7 +1207,13 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 180
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114904145036398330, guid: d531700c60de64e3b8e75c1c26da5ed3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114904145036398330, guid: d531700c60de64e3b8e75c1c26da5ed3, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d531700c60de64e3b8e75c1c26da5ed3, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1999423737 stripped

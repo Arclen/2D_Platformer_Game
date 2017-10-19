@@ -13,7 +13,7 @@ public class RoomController : MonoBehaviour {
 
 	// Structure of a wall in this room
 	public struct wall {
-		public GameObject wallGO;
+		//public GameObject wallGO;
 
 		public bool isOpen;
 
@@ -22,20 +22,20 @@ public class RoomController : MonoBehaviour {
 
 		public wall(GameObject go, Orientation o, bool open){
 
-			wallGO = go;
+			//wallGO = go;
 			orientation = o;
 			isOpen = open;
-			setGameObject();
+			//setGameObject();
 		}
 
 		public wall(Orientation o){
 
 			orientation = o;
 			isOpen = false;
-			setGameObject();
+			//this.setGameObject();
 		}
 
-		private void setGameObject(){
+		/* private void setGameObject(){
 			GameObject openWallGO = Resources.Load<GameObject>("Prefabs/Room/WallOpen");
 			GameObject closedWallGO = Resources.Load<GameObject>("Prefabs/Room/WallClosed");
 
@@ -44,12 +44,13 @@ public class RoomController : MonoBehaviour {
 			} else {
 				wallGO = closedWallGO;
 			}
-		}
+		} */
 	}
 
 	// Use this for initialization
 	void Start () {
 
+		/*
 		// Bottom Wall
 		Instantiate(walls[0].wallGO, new Vector3(0f,-9f,0f) ,Quaternion.identity, gameObject);
 		// Top Wall
@@ -58,6 +59,7 @@ public class RoomController : MonoBehaviour {
 		Instantiate(walls[2].wallGO, new Vector3(-5f,0f,0f) , Quaternion.Euler(new Vector3(0f,0f,90f)), gameObject);
 		// Right Wall
 		Instantiate(walls[3].wallGO, new Vector3(5f,0f,0f) , Quaternion.Euler(new Vector3(0f,0f,270f)), gameObject);
+		*/
 
 	}
 	
