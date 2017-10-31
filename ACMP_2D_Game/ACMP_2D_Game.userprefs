@@ -2,9 +2,9 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/GameManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/RoomController.cs" Line="25" Column="50" />
+      <File FileName="Assets/Scripts/RoomController.cs" Line="111" Column="22" />
       <File FileName="Assets/Scripts/PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="51" Column="2" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="125" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
