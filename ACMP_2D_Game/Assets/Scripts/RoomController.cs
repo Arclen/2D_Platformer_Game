@@ -10,10 +10,10 @@ public class RoomController : MonoBehaviour {
 	public GameObject leftWall;
 	public GameObject rightWall;
 
-	private bool leftClosed;
-	private bool rightClosed;
-	private bool topClosed;
-	private bool bottomClosed;
+	private bool leftClosed = true;
+	private bool rightClosed = true;
+	private bool topClosed = true;
+	private bool bottomClosed = true;
 
 	public GameObject CLOSED_WALL_GO;
 	public GameObject OPEN_WALL_GO;
@@ -28,11 +28,6 @@ public class RoomController : MonoBehaviour {
 		topWall = transform.Find ("top").gameObject;
 		leftWall = transform.Find ("left").gameObject;
 		rightWall = transform.Find ("right").gameObject;
-
-		bottomClosed = true;
-		topClosed = true;
-		leftClosed = true;
-		rightClosed = true;
 
 		CLOSED_WALL_GO = Resources.Load<GameObject> ("Prefabs/Room/WallClosed");
 		OPEN_WALL_GO = Resources.Load<GameObject> ("Prefabs/Room/WallOpen");
@@ -87,27 +82,34 @@ public class RoomController : MonoBehaviour {
 			break;
 		}
 
-		wallToChange = Instantiate (OPEN_WALL_GO, wallToChange.transform.position, wallToChange.transform.rotation);
+        wallToChange = OPEN_WALL_GO;
+		//wallToChange = Instantiate (OPEN_WALL_GO, wallToChange.transform.position, wallToChange.transform.rotation);
 
 	}
 
-	public LinkedList<Direction> getClosedWalls(){
+	public ArrayList getClosedWalls(){
 
-		LinkedList<Direction> closedWalls = new LinkedList<Direction>();
+		ArrayList closedWalls = new ArrayList();
 
 		if (rightClosed) {
-			closedWalls.AddLast (Direction.right);
+			closedWalls.Add (Direction.right);
 		}
 		if (topClosed) {
-			closedWalls.AddLast (Direction.up);
+			closedWalls.Add (Direction.up);
 		}
 		if (leftClosed) {
-			closedWalls.AddLast (Direction.left);
+			closedWalls.Add (Direction.left);
 		}
 		if (bottomClosed) {
-			closedWalls.AddLast (Direction.down);
+			closedWalls.Add (Direction.down);
 		}
 
 		return closedWalls;
+
 	}
+
+    public void SwitchWall(Direction dir)
+    {
+
+    }
 }

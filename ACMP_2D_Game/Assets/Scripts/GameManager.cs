@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -28,11 +27,13 @@ public class GameManager : MonoBehaviour {
 		INSTANCE = null;
 	}
 
+    static System.Random random;
+
 	public Camera mainCamera;
 	public RoomController currentRoom;
 	public int levelSizeModifier;
 	public int levelDifficultyModifier;
-	public LinkedList<GameObject> rooms;
+	public System.Collections.ArrayList rooms;
 
 	private GameObject SPAWN_ROOM_GO;
 	private GameObject DEFAULT_ROOM_GO;
@@ -42,16 +43,26 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+        random = new System.Random();
+
+        rooms = new System.Collections.ArrayList();
+
 		mainCamera = FindObjectOfType (typeof(Camera)) as Camera;
 		SPAWN_ROOM_GO = Resources.Load<GameObject> ("Prefabs/Room/SpawnRoom");
 		DEFAULT_ROOM_GO = Resources.Load<GameObject> ("Prefabs/Room/DefaultRoom");
 		EXIT_ROOM_GO = Resources.Load<GameObject> ("Prefabs/Room/ExitRoom");
 
+        Debug.Log("Room types initialized");
+
 		//FOR TESTING
 		InitializeLevelStart();
 
-		GenerateLevel (5);
-	}
+        Debug.Log("Level start initialized");
+
+        GenerateLevel (5);
+
+        Debug.Log("Level generated");
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -80,32 +91,40 @@ public class GameManager : MonoBehaviour {
 	public void GenerateLevel(int size){
 
 		//Generate first room to the right of the originial room
-		GameObject nextRoom = GenerateRoomInDirection(currentRoom, RoomController.Direction.right);
-		rooms.AddLast (nextRoom);
+		GameObject nextRoom = GenerateRoomInDirection(currentRoom, RoomController.Direction.right, DEFAULT_ROOM_GO);
+		rooms.Add (nextRoom);
 		size--;
+
+		//RoomController.Direction[] availableDirections = new RoomController.Direction[0];
+        System.Collections.ArrayList availableDirections = new System.Collections.ArrayList();
 
 		for (int i = 0; i < size; i++) {
 
 			currentRoom = nextRoom.GetComponent<RoomController>();
 
-			LinkedList<RoomController.Direction> availableDirectionsList = currentRoom.getClosedWalls();
-			RoomController.Direction[] availableDirections = new RoomController.Direction[availableDirectionsList.Count];
-			for(int j = 0; j < availableDirectionsList.Count; j++) {
-				availableDirectionsList.CopyTo (availableDirections, j);
+			availableDirections = currentRoom.getClosedWalls ();
+
+            
+
+            rooms.Add(GenerateRoomInDirection(currentRoom, (RoomController.Direction)availableDirections[random.Next(availableDirections.Count)], DEFAULT_ROOM_GO));
+
+			bool validRoomFound = false;
+
+			while (!validRoomFound) {
+				nextRoom = (GameObject)rooms [random.Next (rooms.Count)];
+
+				if (nextRoom.GetComponent<RoomController> ().getClosedWalls ().Count >= 1)
+					validRoomFound = true;
 			}
+		}
 
-			nextRoom = GenerateRoomInDirection (currentRoom, availableDirections[Random.Range(0,availableDirectionsList.Count -1 )]);
-
-			rooms.AddLast(currentRoom.gameObject);
-
-
-		} 
-
+        availableDirections = nextRoom.GetComponent<RoomController>().getClosedWalls();
+        GenerateRoomInDirection(nextRoom.GetComponent<RoomController>(), (RoomController.Direction)availableDirections[random.Next(availableDirections.Count)], EXIT_ROOM_GO);
 
 	}
 
 	// Generates a room in a relative direction to room
-	public GameObject GenerateRoomInDirection(RoomController room, RoomController.Direction direction){
+	public GameObject GenerateRoomInDirection(RoomController room, RoomController.Direction direction, GameObject roomType){
 
 		Vector3 rightRoomRelative = new Vector3 ((room.transform.position.x + room.GetComponent<BoxCollider2D> ().size.x * room.transform.localScale.x), room.transform.position.y, room.transform.position.z);
 		Vector3 leftRoomRelative = new Vector3 ((room.transform.position.x + room.GetComponent<BoxCollider2D> ().size.x * -room.transform.localScale.x), room.transform.position.y, room.transform.position.z);
@@ -134,8 +153,9 @@ public class GameManager : MonoBehaviour {
 			break;
 		}
 
-		GameObject nextRoom = Instantiate<GameObject> (DEFAULT_ROOM_GO, directionToSpawn, room.transform.rotation);
+		GameObject nextRoom = Instantiate<GameObject> (roomType, directionToSpawn, room.transform.rotation);
 		nextRoom.GetComponent<RoomController> ().connectToRoom (inverseDirection);
+		room.connectToRoom (direction);
 
 		return nextRoom;
 	}
