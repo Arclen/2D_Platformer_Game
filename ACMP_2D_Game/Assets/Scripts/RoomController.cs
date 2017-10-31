@@ -5,61 +5,37 @@ using UnityEngine;
 
 public class RoomController : MonoBehaviour {
 
-	private GameObject GO;
-	private wall[] walls = new wall[4];
+	public GameObject bottomWall;
+	public GameObject topWall;
+	public GameObject leftWall;
+	public GameObject rightWall;
 
-	public enum RoomType{spawn,normal};
-	public RoomType roomType;
+	private bool leftClosed;
+	private bool rightClosed;
+	private bool topClosed;
+	private bool bottomClosed;
 
-	// Structure of a wall in this room
-	public struct wall {
-		//public GameObject wallGO;
+	public GameObject CLOSED_WALL_GO;
+	public GameObject OPEN_WALL_GO;
 
-		public bool isOpen;
 
-		public enum Orientation { bottom, top, left, right };
-		public Orientation orientation;
-
-		public wall(GameObject go, Orientation o, bool open){
-
-			//wallGO = go;
-			orientation = o;
-			isOpen = open;
-			//setGameObject();
-		}
-
-		public wall(Orientation o){
-
-			orientation = o;
-			isOpen = false;
-			//this.setGameObject();
-		}
-
-		/* private void setGameObject(){
-			GameObject openWallGO = Resources.Load<GameObject>("Prefabs/Room/WallOpen");
-			GameObject closedWallGO = Resources.Load<GameObject>("Prefabs/Room/WallClosed");
-
-			if (isOpen) {
-				wallGO = openWallGO;
-			} else {
-				wallGO = closedWallGO;
-			}
-		} */
-	}
+	public enum Direction{left, right, up, down};
 
 	// Use this for initialization
 	void Start () {
 
-		/*
-		// Bottom Wall
-		Instantiate(walls[0].wallGO, new Vector3(0f,-9f,0f) ,Quaternion.identity, gameObject);
-		// Top Wall
-		Instantiate(walls[1].wallGO, new Vector3(0f,9f,0f) , Quaternion.Euler(new Vector3(0f,0f,180f)), gameObject);
-		// Left Wall
-		Instantiate(walls[2].wallGO, new Vector3(-5f,0f,0f) , Quaternion.Euler(new Vector3(0f,0f,90f)), gameObject);
-		// Right Wall
-		Instantiate(walls[3].wallGO, new Vector3(5f,0f,0f) , Quaternion.Euler(new Vector3(0f,0f,270f)), gameObject);
-		*/
+		bottomWall = transform.Find ("bottom").gameObject;
+		topWall = transform.Find ("top").gameObject;
+		leftWall = transform.Find ("left").gameObject;
+		rightWall = transform.Find ("right").gameObject;
+
+		bottomClosed = true;
+		topClosed = true;
+		leftClosed = true;
+		rightClosed = true;
+
+		CLOSED_WALL_GO = Resources.Load<GameObject> ("Prefabs/Room/WallClosed");
+		OPEN_WALL_GO = Resources.Load<GameObject> ("Prefabs/Room/WallOpen");
 
 	}
 	
@@ -68,22 +44,70 @@ public class RoomController : MonoBehaviour {
 		
 	}
 
-	// Initialize room with passed in walls and room type
-	public void Initialize(wall[] walls_, RoomType type){
+	public GameObject getWallFromDirection(Direction dir){
 
-		walls = walls_;
-		roomType = type;
+		switch (dir) {
+		case Direction.down:
+			return bottomWall;
+			break;
+		case Direction.up:
+			return topWall;
+			break;
+		case Direction.left:
+			return leftWall;
+			break;
+		case Direction.right:
+			return rightWall;
+			break;
+		}
+
+		return null;
+	}
+		
+	public void connectToRoom(Direction dir){
+
+		GameObject wallToChange = null;
+
+		switch (dir) {
+		case Direction.down:
+			wallToChange = bottomWall;
+			bottomClosed = false;
+			break;
+		case Direction.up:
+			wallToChange = topWall;
+			topClosed = false;
+			break;
+		case Direction.left:
+			wallToChange = leftWall;
+			leftClosed = false;
+			break;
+		case Direction.right:
+			wallToChange = rightWall;
+			rightClosed = false;
+			break;
+		}
+
+		wallToChange = Instantiate (OPEN_WALL_GO, wallToChange.transform.position, wallToChange.transform.rotation);
 
 	}
 
-	// Default initialize with all closed walls and normal room type
-	public void Initialize(){
+	public LinkedList<Direction> getClosedWalls(){
 
-		walls [0] = new wall (wall.Orientation.bottom);
-		walls [1] = new wall (wall.Orientation.top);
-		walls [2] = new wall (wall.Orientation.left);
-		walls [3] = new wall (wall.Orientation.right);
+		LinkedList<Direction> closedWalls = new LinkedList<Direction>();
 
-		roomType = RoomType.normal;
+		if (rightClosed) {
+			closedWalls.AddLast (Direction.right);
+		}
+		if (topClosed) {
+			closedWalls.AddLast (Direction.up);
+		}
+		if (leftClosed) {
+			closedWalls.AddLast (Direction.left);
+		}
+		if (bottomClosed) {
+			closedWalls.AddLast (Direction.down);
+		}
+
+		return closedWalls;
 	}
 }
