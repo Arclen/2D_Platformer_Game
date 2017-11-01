@@ -39,7 +39,7 @@ public class RoomController : MonoBehaviour {
 		
 	}
 
-	public GameObject getWallFromDirection(Direction dir){
+	public GameObject GetWallFromDirection(Direction dir){
 
 		switch (dir) {
 		case Direction.down:
@@ -63,6 +63,11 @@ public class RoomController : MonoBehaviour {
 
 		GameObject wallToChange = null;
 
+		bottomWall = transform.Find ("bottom").gameObject;
+		topWall = transform.Find ("top").gameObject;
+		leftWall = transform.Find ("left").gameObject;
+		rightWall = transform.Find ("right").gameObject;
+
 		switch (dir) {
 		case Direction.down:
 			wallToChange = bottomWall;
@@ -81,10 +86,8 @@ public class RoomController : MonoBehaviour {
 			rightClosed = false;
 			break;
 		}
-
-        wallToChange = OPEN_WALL_GO;
-		//wallToChange = Instantiate (OPEN_WALL_GO, wallToChange.transform.position, wallToChange.transform.rotation);
-
+			
+		SwitchWall (wallToChange);
 	}
 
 	public ArrayList getClosedWalls(){
@@ -108,8 +111,34 @@ public class RoomController : MonoBehaviour {
 
 	}
 
-    public void SwitchWall(Direction dir)
+	public void SwitchWall(GameObject wallToChange)
     {
 
+		CLOSED_WALL_GO = Resources.Load<GameObject> ("Prefabs/Room/WallClosed");
+		OPEN_WALL_GO = Resources.Load<GameObject> ("Prefabs/Room/WallOpen");
+
+		GameObject newWall = OPEN_WALL_GO;
+
+		GameObject spawnedWall = Instantiate (newWall, wallToChange.transform.position, wallToChange.transform.rotation, transform);
+		spawnedWall.transform.localScale = wallToChange.transform.localScale;
+
+		Destroy (wallToChange);
     }
+
+	private bool IsDirectionClosed (Direction dir){
+
+		switch (dir) {
+		case Direction.down:
+			return bottomClosed;
+		case Direction.up:
+			return topClosed;
+		case Direction.left:
+			return leftClosed;
+		case Direction.right:
+			return rightClosed;
+		}
+
+		return true;
+	}
+		
 }

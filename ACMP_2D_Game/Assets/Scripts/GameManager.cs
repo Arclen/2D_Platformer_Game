@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour {
 
         Debug.Log("Level start initialized");
 
-        GenerateLevel (5);
+		GenerateLevel (levelSizeModifier);
 
         Debug.Log("Level generated");
     }
