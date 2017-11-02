@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿//Code created by Jacob Scanlan, 2017
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : PhysicsObject {
+    public class EnemyController : PhysicsObject {
     private int[] varChoices;
     private int randomDir;
     private Vector2 enemySpeed;
@@ -13,6 +15,8 @@ public class EnemyController : PhysicsObject {
     public float period = 0.5f;
     public bool chasePlayer;
     public Transform Player;
+    public GameObject Projectile;
+    private double shootbullet = 3f;
 
     // Use this for initialization
     void Start () {
@@ -44,6 +48,15 @@ public class EnemyController : PhysicsObject {
                 enemySpeed.x = direction;
                 targetVelocity = speedMultiplier * enemySpeed;
             }
-        }   
+        }
+        if(Time.time > shootbullet)
+        {
+            shootbullet += 3;
+            GameObject bullet = Instantiate(Projectile, transform.position, Quaternion.identity) as GameObject;
+            Vector3 angle = Player.transform.position - transform.position;
+            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+            bullet.GetComponent<Rigidbody2D>().velocity = angle * 2;
+            Destroy(bullet, 2);
+        }
 	}
 }

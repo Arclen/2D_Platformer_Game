@@ -6,6 +6,7 @@ public class PlayerController : PhysicsObject {
 
     public float maxSpeed = 6;
     public float jumpTakeOffSpeed = 6;
+    public float HP = 3;
     
 	// Use this for initialization
 	void Start () {
