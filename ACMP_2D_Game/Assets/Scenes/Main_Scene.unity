@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   currentRoom: {fileID: 0}
-  levelSizeModifier: 0
+  levelSizeModifier: 9
   levelDifficultyModifier: 0
 --- !u!4 &1166541437
 Transform:

@@ -1,16 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\GameManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RoomController.cs">
     <Files>
-      <File FileName="Assets\Scripts\RoomController.cs" Line="117" Column="14" />
+      <File FileName="Assets\Scripts\RoomController.cs" Line="126" Column="6" />
       <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameManager.cs" Line="75" Column="40" />
+      <File FileName="Assets\Scripts\GameManager.cs" Line="102" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
@@ -19,6 +14,15 @@
       <Breakpoint file="/home/logan/Development/2D_Game/ACMP_2D_Game/Assets/Scripts/GameController.cs" line="21" column="1" />
       <Breakpoint file="/home/logan/Development/2D_Game/ACMP_2D_Game/Assets/Scripts/GameController.cs" line="24" column="1" />
       <Breakpoint file="C:\Users\lsj150230\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\GameManager.cs" line="87" column="82" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\RoomController.cs" line="90" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\RoomController.cs" line="122" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\RoomController.cs" line="71" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\RoomController.cs" line="81" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\RoomController.cs" line="82" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\RoomController.cs" line="83" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\GameManager.cs" line="109" column="1" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\GameManager.cs" line="158" column="3" />
+      <Breakpoint file="C:\Users\Shinji\Documents\GitHub\2D_Platformer_Game\ACMP_2D_Game\Assets\Scripts\GameManager.cs" line="157" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
