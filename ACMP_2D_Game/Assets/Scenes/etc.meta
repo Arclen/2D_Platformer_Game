@@ -1,7 +1,11 @@
 fileFormatVersion: 2
 guid: 8f19520dfba34f740bf6dc892b2932c9
 folderAsset: yes
+<<<<<<< HEAD:ACMP_2D_Game/Assets/Scenes/etc.meta
 timeCreated: 1508380730
+=======
+timeCreated: 1509582521
+>>>>>>> 003f66f1050291a1f9a5d83c3fd855f552605813:ACMP_2D_Game/Assets/Materials.meta
 licenseType: Free
 DefaultImporter:
   externalObjects: {}

@@ -14,10 +14,21 @@ public class AttackObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector2 move = Vector2.zero;
         if (Input.GetKeyDown(KeyCode.C))
         {
             this.gameObject.GetComponent<SpriteRenderer>().enabled = true;
             StartCoroutine(Attack());
+            /*move.x = Input.GetAxis("Horizontal");
+            if (this.gameObject.GetComponentInParent(typeof(SpriteRenderer)).GetComponent<SpriteRenderer>().flipX == false)
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().flipX = false;
+                this.gameObject.GetComponent<Transform>().position = new Vector3(-this.gameObject.GetComponentInParent(typeof(Transform)).GetComponent<Transform>().position.x, this.gameObject.GetComponentInParent(typeof(Transform)).GetComponent<Transform>().position.y, this.gameObject.GetComponentInParent(typeof(Transform)).GetComponent<Transform>().position.z);
+            }
+            else
+            {
+                this.gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            }*/
         }
     }
 
